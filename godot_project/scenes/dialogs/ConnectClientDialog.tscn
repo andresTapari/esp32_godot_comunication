@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://yrpamlhcckul"]
+
+[node name="Window" type="Window"]
+title = "Conectar ESP32"
+initial_position = 2
+size = Vector2i(300, 180)
+unresizable = true
+
+[node name="HSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Conectar con dispositivo:"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Direccion IP:"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "192.168.0.223"
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Puerto"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+max_value = 1e+07
+value = 12000.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Estado"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer/HBoxContainer4"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Desconectado"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "CANCELAR"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "CONECTAR"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 4.0

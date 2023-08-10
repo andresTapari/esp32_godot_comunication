@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Godot Project"
+config/name="ESP32 Godot Conection"
+config/tags=PackedStringArray("utn_frp")
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"

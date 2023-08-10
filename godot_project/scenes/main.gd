@@ -1,7 +1,8 @@
 extends Node
 
 class_name ClientNode
-@onready var udp_server: UDPServer = UDPServer.new()
+
+#@onready var udp_server: UDPServer = UDPServer.new()
 
 var udp := PacketPeerUDP.new()
 var connected = false
@@ -16,3 +17,9 @@ func _process(delta):
 	if udp.get_available_packet_count() > 0:
 		print("Connected: %s" % udp.get_packet().get_string_from_utf8())
 		connected = true
+
+func _input(event):
+	if Input.is_action_pressed("ui_accept"):
+		var message = "Mensaje desde Godot"
+		udp.put_packet(message.to_utf8_buffer())
+		print("Mensaje enviado: ", message)

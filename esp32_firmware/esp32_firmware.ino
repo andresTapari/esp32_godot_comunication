@@ -25,6 +25,9 @@ void setup()
   Serial.print("ESP Board MAC Address:  ");
   Serial.println(WiFi.macAddress());
   udp.begin(udpPort); 
+  
+  pinMode(13,OUTPUT);
+  digitalWrite(13,LOW);
 }
 
 void loop()
@@ -45,8 +48,13 @@ void loop()
       if (strcmp(packetData,"HANDSHAKE_CONFIRMED") == 0)
       {
         udp_send_data("HANDSHAKE_CONFIRMED");
+        digitalWrite(13 ,HIGH);
       }
-
+      // Si es una solicitud de PING contesta PONG
+      if (strcmp(packetData,"PING") == 0)
+      {
+        udp_send_data("PONG");
+      }
       // Mostrar los datos del paquete en el monitor serie
       Serial.print("Datos del paquete: ");
       Serial.println(packetData);

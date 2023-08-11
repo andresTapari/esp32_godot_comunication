@@ -2,9 +2,19 @@ extends Node
 class_name ClientNode
 
 var udp: PacketPeerUDP = PacketPeerUDP.new()
-
+var testConectionTimer: Timer = Timer.new()
+var conectionTimeOut: Timer = Timer.new()
 var isConnected: bool    = false
 
+func _ready():
+	testConectionTimer.set("wait_time",1)
+	testConectionTimer.set("one_shot",true)
+	conectionTimeOut.set("wait_time",5)
+	conectionTimeOut.set("one_shot",true)
+	testConectionTimer.timeout.connect(_testConectionTimer_timeOut)
+	conectionTimeOut.timeout.connect(_conectionTimeOut_timeOut)
+	add_child(testConectionTimer)
+	add_child(conectionTimeOut)
 
 func _process(delta):
 	if udp.get_available_packet_count() > 0:
@@ -16,10 +26,13 @@ func _process(delta):
 				confirm_handshake()
 			if income_message == "HANDSHAKE_CONFIRMED":
 				isConnected = true
-
+				testConectionTimer.start()
 		# Si establecimos conexión, aqui se procesan todos los paquetes de entrada
 		if isConnected:
-			pass
+			if income_message == "PONG":
+				# Si contesta pong reseteamos timer
+				testConectionTimer.start()
+				conectionTimeOut.stop()
 
 
 # Conectamos con el servidor en la direccion ip y el puerto
@@ -38,3 +51,14 @@ func send_handshake() -> void:
 func confirm_handshake() -> void:
 	var message: String = "HANDSHAKE_CONFIRMED"
 	udp.put_packet(message.to_utf8_buffer())
+
+#Señales:
+func _testConectionTimer_timeOut() -> void:
+	var message: String = "PING"
+	udp.put_packet(message.to_utf8_buffer())
+	conectionTimeOut.start()
+
+func _conectionTimeOut_timeOut() -> void:
+	testConectionTimer.stop()
+	isConnected = false
+	print("Error ESP32 desconectada")

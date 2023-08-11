@@ -2,6 +2,8 @@ extends Node
 #class_name ClientNode
 
 var udp: PacketPeerUDP = PacketPeerUDP.new()
+
+
 var isConnected: bool    = false
 
 func _ready():

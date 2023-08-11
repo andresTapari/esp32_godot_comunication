@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://yrpamlhcckul"]
+[gd_scene load_steps=2 format=3 uid="uid://yrpamlhcckul"]
+
+[ext_resource type="Script" path="res://scripts/dialogs/ConnectClientDialog.gd" id="1_2rate"]
 
 [node name="Window" type="Window"]
 title = "Conectar ESP32"
 initial_position = 2
-size = Vector2i(300, 180)
+size = Vector2i(350, 180)
 unresizable = true
+script = ExtResource("1_2rate")
 
 [node name="HSeparator" type="HSeparator" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -61,6 +64,10 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "192.168.0.223"
 alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "BUSCAR"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd67krhmuccg5"]
+
+[ext_resource type="Script" path="res://scripts/dialogs/IpElementSelect.gd" id="1_35pg0"]
+
+[node name="IpElementSelect" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_35pg0")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="MacLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "MAC: ##:##:##:##:##:##"
+
+[node name="VSeparator3" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IpLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Ip:192.168.001.001"
+
+[node name="VSeparator4" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Seleccionar"
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

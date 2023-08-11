@@ -61,4 +61,4 @@ func _testConectionTimer_timeOut() -> void:
 func _conectionTimeOut_timeOut() -> void:
 	testConectionTimer.stop()
 	isConnected = false
-	print("Error ESP32 desconectada")
+	print_debug("Error ESP32 desconectada")

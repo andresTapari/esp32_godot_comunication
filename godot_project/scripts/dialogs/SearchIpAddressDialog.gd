@@ -8,6 +8,15 @@ signal ip_selected(ip_address)
 
 func _ready():
 	# Cargamos lista de ips en la red:
+	load_ip_address_in_table()
+
+func load_ip_address_in_table() -> void:
+	
+	var previusData = %IpContainer.get_children()
+	for element in previusData:
+		if element.is_in_group("IpElementSelect"): 
+			element.queue_free()
+			
 	var ipAddreeses = IP.get_local_addresses()
 	var indx: int = 0
 	for ip in ipAddreeses:
@@ -18,7 +27,6 @@ func _ready():
 			# Los agregamos al contenedor
 			%IpContainer.add_child(newIpElement)
 		indx += 1
-
 func _handle_ip_selected(_ip_address: Dictionary) -> void:
 	emit_signal("ip_selected",_ip_address)
 	queue_free()
@@ -31,3 +39,7 @@ func _on_button_pressed():
 # Funcion que se ejecuta cuando se presiona el botón exit de la ventana
 func _on_close_requested():
 	queue_free()
+
+
+func _on_button_refresh_pressed():
+	load_ip_address_in_table()

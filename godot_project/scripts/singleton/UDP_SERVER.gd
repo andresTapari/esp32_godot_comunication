@@ -20,7 +20,9 @@ func _process(delta):
 
 # Conectamos con el servidor en la direccion ip y el puerto
 func connect_to_client(ip_address: String, port: int ) -> void:
-	udp.connect_to_host(ip_address,port)
+	var err = udp.connect_to_host(ip_address,port)
+	if not err == OK:
+		pass
 
 # Envia una señal de handshake a la esp32 para comprobar la coneccion
 func send_handshake() -> void:

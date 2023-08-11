@@ -19,7 +19,14 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
@@ -32,6 +39,14 @@ vertical_alignment = 1
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ButtonRefresh" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Refrescar"
+
+[node name="VSeparator6" type="VSeparator" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
@@ -76,4 +91,5 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer2/ButtonRefresh" to="." method="_on_button_refresh_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

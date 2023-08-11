@@ -59,13 +59,14 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="LineEditIp" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "192.168.0.223"
 alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="ButtonBuscar" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
 text = "BUSCAR"
 
@@ -81,7 +82,8 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="SpinBoxPort" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1e+07
 value = 12000.0
@@ -109,16 +111,16 @@ layout_mode = 2
 [node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="ButtonVolver" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-text = "CANCELAR"
+text = "VOLVER"
 
 [node name="VSeparator2" type="VSeparator" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="ButtonConectar" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "CONECTAR"
 
@@ -131,3 +133,7 @@ size_flags_horizontal = 3
 modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 4.0
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer5/ButtonBuscar" to="." method="_on_button_buscar_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer3/ButtonVolver" to="." method="_on_button_volver_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer3/ButtonConectar" to="." method="_on_button_conectar_pressed"]

@@ -44,6 +44,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/VBoxContainer/ScrollContainer/IpContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
@@ -70,3 +74,6 @@ size_flags_horizontal = 3
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

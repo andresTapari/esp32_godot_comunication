@@ -1,5 +1,5 @@
 extends Node
-class_name ClientNode
+#class_name ClientNode
 
 var udp: PacketPeerUDP = PacketPeerUDP.new()
 var isConnected: bool    = false

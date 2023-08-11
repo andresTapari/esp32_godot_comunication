@@ -1,7 +1,7 @@
 extends Window
 
 signal ip_selected(ip_address)
-
+#var udp_peer := StreamPeerUDP.new()
 #Escenas:
 @onready var IP_ELEMENT = preload("res://scenes/dialogs/IpElementSelect.tscn")
 

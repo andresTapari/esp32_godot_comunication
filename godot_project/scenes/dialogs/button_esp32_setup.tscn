@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcrki7ba7srvy"]
+
+[ext_resource type="Script" path="res://scripts/dialogs/button_esp32_setup.gd" id="1_moga2"]
+
+[node name="ButtonSetup" type="Button"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 39.0
+grow_horizontal = 0
+text = "CONFIGURACION ESP"
+script = ExtResource("1_moga2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

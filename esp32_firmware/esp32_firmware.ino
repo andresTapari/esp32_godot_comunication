@@ -1,13 +1,12 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 #include "definitions.h"
+#include "SerialProtocol.h"
+
+
+void udp_send_data(char *_message);
 
 WiFiUDP udp;
-/*
-  const char* ssid = "Fibertel WiFi190 2.4GHz";       // Reemplaza con tu SSID de red WiFi
-  const char* password = "0043616130";                // Reemplaza con tu contraseña de red WiFi
-  const int udpPort = 12000;
-*/
 
 void setup()
 {
@@ -50,18 +49,26 @@ void loop()
         udp_send_data("HANDSHAKE_CONFIRMED");
         digitalWrite(13 ,HIGH);
       }
-      // Si es una solicitud de PING contesta PONG
+      // Si es una solicitud de PING 
       if (strcmp(packetData,"PING") == 0)
       {
+        // contesta PONG
         udp_send_data("PONG");
       }
-      // Mostrar los datos del paquete en el monitor serie
-      Serial.print("Datos del paquete: ");
-      Serial.println(packetData);
-      
+      if(packetData[0]=='$')
+      {
+        int *input[6];
+        decodeCommand(packetData,input);
+        handle_comand_input(input);
+        for (int i = 0; i < 6; i++) 
+        {
+          delete input[i]; // Liberar la memoria asignada en el heap 
+        }
+      }
     }
   }
 }
+
 
 void udp_send_data(char *_message)
 {

@@ -6,6 +6,9 @@ var testConectionTimer: Timer = Timer.new()
 var conectionTimeOut: Timer = Timer.new()
 var isConnected: bool    = false
 
+var current_ip
+var current_port
+
 func _ready():
 	testConectionTimer.set("wait_time",1)
 	testConectionTimer.set("one_shot",true)
@@ -41,6 +44,10 @@ func connect_to_client(ip_address: String, port: int ) -> void:
 	if err == OK:
 		send_handshake()
 		pass
+
+func send_to_client(newMessage: String) -> void:
+	if isConnected:
+		udp.put_packet(newMessage.to_utf8_buffer())
 
 # Envia una señal de handshake a la esp32 para comprobar la coneccion
 func send_handshake() -> void:

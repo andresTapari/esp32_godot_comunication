@@ -47,7 +47,7 @@ void loop()
       if (strcmp(packetData,"HANDSHAKE_CONFIRMED") == 0)
       {
         udp_send_data("HANDSHAKE_CONFIRMED");
-        digitalWrite(13 ,HIGH);
+        // digitalWrite(13 ,HIGH);
       }
       // Si es una solicitud de PING 
       if (strcmp(packetData,"PING") == 0)

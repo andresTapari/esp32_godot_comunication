@@ -10,7 +10,6 @@ void decodeCommand(const char *command, int *input[6])
 
   // Ignoramos el primer token (inicio del comando)
   token = strtok_r(rest, "|", &rest);
-  
   if (token != NULL && strcmp(token, "$") == 0) 
   {
     while ((token = strtok_r(rest, "|", &rest)) != NULL && index < 6) 
@@ -19,7 +18,6 @@ void decodeCommand(const char *command, int *input[6])
       input[index] = new int(value);
       index++;
     }
-    
   }
   else 
   {
@@ -29,12 +27,12 @@ void decodeCommand(const char *command, int *input[6])
 
 void handle_comand_input(int *args[6])
 {
-  Serial.println("Handle_comand_input:");
+  // Serial.println("Handle_comand_input:");
   switch(*args[0])
   {
     case CMD1: //do CMD 1
     {
-      do_CMD01(args);
+      doCMD01(args);
       break;
     }  
     default:  // cmd uknown
@@ -43,7 +41,7 @@ void handle_comand_input(int *args[6])
   
 }
 
-void do_CMD01(int *args[6])
+void doCMD01(int *args[6])
 { 
   pinMode(*args[1], OUTPUT);
   digitalWrite(*args[1],*args[2]);

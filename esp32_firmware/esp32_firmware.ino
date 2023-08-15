@@ -3,7 +3,6 @@
 #include "definitions.h"
 #include "SerialProtocol.h"
 
-
 void udp_send_data(char *_message);
 
 WiFiUDP udp;

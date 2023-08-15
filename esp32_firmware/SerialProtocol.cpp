@@ -61,11 +61,11 @@ void doCMD01(int *args[6])
   digitalWrite(*args[1],*args[2]);
 }
 
-// esp32.servoAtach(pinNumber,right=0/left=1)
+// esp32.servoAtach(pinNumber, right=0/left=1)
 // Establece los pines del robot 
 void doCMD02(int *args[6])
 {
-  if(*args[1] == 0)
+  if(*args[2] == 0)
   {
     servoRight.attach(*args[1]);
   }
@@ -75,26 +75,33 @@ void doCMD02(int *args[6])
   }
 }
 
-// esp32.robotRun(speed, direction)
+// esp32.servoWrite(value, right=0/left=1)
 void doCMD03(int *args[6])
 {
-  // 90 = velocidad de reposo para servo continuo
+  // 90 = velocidad de reposo para servo continuo  (<- MAX = 0 --- 90 --- 180 = MAX ->)
   int speedRight = 90;  
   int speedLeft  = 90;
-  // Si va en una dirección
-  if( *args[2] == 1)  
+  // Seleccionamos numero de servo
+  if( *args[2] == 0)  
   {
-    speedRight = (int)interpolate(*args[1],0,90);
-    speedLeft  = (int)interpolate(*args[1],90,180);   // <- Un motor gira opuesto para la misma direccion
+    int topValue = 0;
+    if(*args[3] == 1)
+    {
+      topValue = 180;
+    }
+    speedRight = (int)customMap(*args[1],0,100,90, topValue); 
+    servoRight.write(speedRight);
   }
-  // Si va en la direccion contraria
   else
   {
-    speedLeft = (int)interpolate(*args[1],0,90);
-    speedRight  = (int)interpolate(*args[1],90,180);   // <- Un motor gira opuesto para la misma direccion
+    int topValue = 0;
+    if(*args[3] == 1)
+    {
+      topValue = 180;
+    }
+    speedLeft = (int)customMap(*args[1],0,100,90,topValue); 
+    servoLeft.write(speedLeft);
   }
-  servoRight.write(speedRight);
-  servoLeft.write(speedLeft);
 }
 
 
@@ -108,4 +115,10 @@ double interpolate(double value, double min, double max) {
     
     // Interpolación lineal entre 'min' y 'max'
     return min + fraction * (max - min);
+}
+
+double customMap(double value, double in_min, double in_max, double out_min, double out_max) 
+{
+    // Mapea el valor desde el rango de entrada al rango de salida
+    return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

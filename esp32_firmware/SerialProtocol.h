@@ -16,6 +16,7 @@ void doCMD01(int *args[6]);
 void doCMD02(int *args[6]);
 void doCMD03(int *args[6]);
 
+double customMap(double value, double in_min, double in_max, double out_min, double out_max);
 double interpolate(double value, double min, double max);
 
 #endif

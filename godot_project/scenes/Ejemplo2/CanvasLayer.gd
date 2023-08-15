@@ -24,3 +24,11 @@ func _on_attach_servo_pin_btn_pressed():
 	var servoLeftPin  = %SpinBoxPinLeftMotor.get("value")
 	esp32.attachServo(servoRightPin,0)
 	esp32.attachServo(servoLeftPin, 1)
+
+func _on_check_box_invert_right_motor_toggled(button_pressed):
+	var speed: int = %HSliderSpeedRight.get("value")
+	esp32.servoWrite(speed,0,button_pressed)
+
+func _on_check_box_invert_left_motor_toggled(button_pressed):
+	var speed: int = %HSliderSpeedRight.get("value")
+	esp32.servoWrite(speed,1,button_pressed)

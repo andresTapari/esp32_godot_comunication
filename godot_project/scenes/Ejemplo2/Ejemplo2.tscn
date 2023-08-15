@@ -115,8 +115,10 @@ text = "Attach Servo Pins"
 
 [node name="ButtonSetup" parent="CanvasLayer" instance=ExtResource("1_836ly")]
 
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/HBoxContainer3/CheckBoxInvertRightMotor" to="CanvasLayer" method="_on_check_box_invert_right_motor_toggled"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/HBoxContainer/HSliderSpeedRight" to="CanvasLayer" method="_on_h_slider_speed_right_value_changed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/ResetRightSlider" to="CanvasLayer" method="_on_reset_right_slider_pressed"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/VBoxContainer2/HBoxContainer3/CheckBoxInvertLeftMotor" to="CanvasLayer" method="_on_check_box_invert_left_motor_toggled"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/VBoxContainer2/HBoxContainer/HSliderSpeedLeft" to="CanvasLayer" method="_on_h_slider_speed_left_value_changed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer2/HBoxContainer/ResetLeftSlider" to="CanvasLayer" method="_on_reset_left_slider_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/AttachServoPinBtn" to="CanvasLayer" method="_on_attach_servo_pin_btn_pressed"]

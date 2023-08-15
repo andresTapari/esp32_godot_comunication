@@ -31,6 +31,7 @@ void setup()
 
 void loop()
 {
+  int input[6];
   int packetSize = udp.parsePacket();
   if (packetSize)
   {
@@ -57,13 +58,10 @@ void loop()
       }
       if(packetData[0]=='$')
       {
-        int *input[6];
+        
         decodeCommand(packetData,input);
         handle_comand_input(input);
-        for (int i = 0; i < 6; i++) 
-        {
-          delete input[i]; // Liberar la memoria asignada en el heap 
-        }
+
       }
     }
   }

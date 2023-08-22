@@ -56,12 +56,11 @@ void loop()
         // contesta PONG
         udp_send_data("PONG");
       }
+      // Si es un comando, inicia con el tooken $
       if(packetData[0]=='$')
       {
-        
         decodeCommand(packetData,input);
         handle_comand_input(input);
-
       }
     }
   }

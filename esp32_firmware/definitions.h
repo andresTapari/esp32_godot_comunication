@@ -14,8 +14,14 @@
 // const char* password = "lapri351";                      // Reemplaza con tu contraseña de red WiFi
 // const int udpPort    = 12000;                           // Reemplazar por puerto  usar
 
-const char* ssid     = "Test";                     // Reemplaza con tu SSID de red WiFi
-const char* password = "Andres123";                      // Reemplaza con tu contraseña de red WiFi
+// Celular Andres
+const char* ssid     = "WeeBot-wifi";                     // Reemplaza con tu SSID de red WiFi
+const char* password = "WeeBot-1234";                      // Reemplaza con tu contraseña de red WiFi
 const int udpPort    = 12000;                           // Reemplazar por puerto  usar
+
+
+// const char* ssid     = "Test";                     // Reemplaza con tu SSID de red WiFi
+// const char* password = "Andres123";                      // Reemplaza con tu contraseña de red WiFi
+// const int udpPort    = 12000;                           // Reemplazar por puerto  usar
 
 #endif

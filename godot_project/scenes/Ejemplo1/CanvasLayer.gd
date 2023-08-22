@@ -4,8 +4,8 @@ extends CanvasLayer
 
 # Esta función se ejecuta cuando se presiona el boton encender led
 func _on_button_encender_pressed():
-	esp32.digitalWrite(13,true)
+	esp32.digitalWrite(%SpinBoxPinNumber.get("value"),true)
 
 # Esta función se ejecuta cuando se presiona el boton apagar led
 func _on_button_apagar_pressed():
-	esp32.digitalWrite(13,false)
+	esp32.digitalWrite(%SpinBoxPinNumber.get("value"),false)

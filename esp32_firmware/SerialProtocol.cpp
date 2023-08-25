@@ -3,7 +3,12 @@
 Servo servoRight; //Motor Izquierdo
 Servo servoLeft;  //Motor Derecho
 
-// Decodificar comandos
+/**
+ * @brief Decodifica un comando en formato de cadena y lo convierte en un arreglo de enteros.
+ * 
+ * @param command Cadena de texto que contiene el comando a decodificar.
+ * @param input Arreglo de enteros donde se almacenarán los valores decodificados.
+ */
 void decodeCommand(const char *command, int input[]) 
 {
   char *token;
@@ -27,6 +32,11 @@ void decodeCommand(const char *command, int input[])
   }
 }
 
+/**
+ * @brief Procesa la entrada de comandos y realiza acciones según el tipo de comando recibido.
+ * 
+ * @param args Arreglo de enteros que contiene los argumentos del comando recibido.
+ */
 void handle_comand_input(int args[6])
 {
   // Serial.println("Handle_comand_input:");
@@ -53,16 +63,22 @@ void handle_comand_input(int args[6])
   
 }
 
-// esp32.digitalWrite(pinNumber,value)
-// establece el valor logico de value en pinNumber
+/**
+ * @brief Realiza la acción correspondiente al comando CMD1.
+ * 
+ * @param args Arreglo de enteros que contiene los argumentos del comando.
+ */
 void doCMD01(int args[6])
 { 
   pinMode(args[1], OUTPUT);
   digitalWrite(args[1],args[2]);
 }
 
-// esp32.servoAtach(pinNumber, right=0/left=1)
-// Establece los pines del robot 
+/**
+ * @brief Realiza la acción correspondiente al comando CMD2.
+ * 
+ * @param args Arreglo de enteros que contiene los argumentos del comando.
+ */
 void doCMD02(int args[6])
 {
   if(args[2] == 0)
@@ -75,7 +91,11 @@ void doCMD02(int args[6])
   }
 }
 
-// esp32.servoWrite(value, right=0/left=1)
+/**
+ * @brief Realiza la acción correspondiente al comando CMD3.
+ * 
+ * @param args Arreglo de enteros que contiene los argumentos del comando.
+ */
 void doCMD03(int args[6])
 {
   // 90 = velocidad de reposo para servo continuo  (<- MAX = 0 --- 90 --- 180 = MAX ->)
@@ -104,21 +124,17 @@ void doCMD03(int args[6])
   }
 }
 
-
-double interpolate(double value, double min, double max) {
-    // Asegurarse de que 'value' esté dentro del rango [min, max]
-    if (value < min) value = min;
-    if (value > max) value = max;
-    
-    // Calcular la fracción de 'value' entre 'min' y 'max'
-    double fraction = (value - min) / (max - min);
-    
-    // Interpolación lineal entre 'min' y 'max'
-    return min + fraction * (max - min);
-}
-
+/**
+ * @brief Realiza una función de mapeo personalizada entre dos rangos.
+ * 
+ * @param value Valor a ser mapeado.
+ * @param in_min Valor mínimo del rango de entrada.
+ * @param in_max Valor máximo del rango de entrada.
+ * @param out_min Valor mínimo del rango de salida.
+ * @param out_max Valor máximo del rango de salida.
+ * @return Valor mapeado en el rango de salida.
+ */
 double customMap(double value, double in_min, double in_max, double out_min, double out_max) 
 {
-    // Mapea el valor desde el rango de entrada al rango de salida
     return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

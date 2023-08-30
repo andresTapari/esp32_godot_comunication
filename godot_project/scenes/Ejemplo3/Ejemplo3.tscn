@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://di6p8fs7uxe70"]
+
+[ext_resource type="Script" path="res://scenes/Ejemplo3/Ejemplo3.gd" id="1_fifkn"]
+[ext_resource type="PackedScene" uid="uid://bcrki7ba7srvy" path="res://scenes/dialogs/button_esp32_setup.tscn" id="2_eogvm"]
+
+[node name="Ejemplo3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fifkn")
+
+[node name="ButtonSetup" parent="." instance=ExtResource("2_eogvm")]
+layout_mode = 1

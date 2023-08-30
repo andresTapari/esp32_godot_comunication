@@ -20,6 +20,18 @@ config/icon="res://icon.svg"
 
 UdpServer="*res://scripts/singleton/UDP_SERVER.gd"
 
+[input]
+
+L2={
+"deadzone": 0.5,
+"events": []
+}
+Joipad_L2={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":-1.0,"script":null)
+]
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

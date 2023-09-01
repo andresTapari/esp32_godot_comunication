@@ -17,9 +17,5 @@ Para correr esta aplicación se necesita descargar los siguientes programas:
 El ejemplo de domino trata de controlar un pequeño robot a travez de una aplicación echa en Godot.
 
 Ver video en youtube.
-![Alt text](img/img_01.png)
+[![Alt text](https://img.youtube.com/vi/L-NJLUZ0oGY/0.jpg)](https://www.youtube.com/watch?v=L-NJLUZ0oGY)
 
-![Alt text](https://img.youtube.com/vi/L-NJLUZ0oGY/0.jpg)(https://youtu.be/L-NJLUZ0oGY)
-
-
-https://youtu.be/L-NJLUZ0oGY

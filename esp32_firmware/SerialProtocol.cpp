@@ -6,7 +6,6 @@ Servo servoLeft;  //Motor Derecho
 hw_timer_t *timerServoRun   = NULL;         // Puntero al timer para los servos
 
 unsigned long timeToWait_ms;                // Tiempo a esperar en ms
-unsigned long startTime_ms;                 // Tiempo en que inicio a contar en ms
 
 unsigned long volatile timerCounter_ms;     // Contador del timer en ms 
 

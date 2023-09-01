@@ -52,7 +52,7 @@ func attachServo(pinNumber:int, servoNumber: int) -> void:
 func servoWrite(angle_in_degrees: int, servoNumber: int, foward: bool = true ) -> void:
 	var direction: int = (foward == true)
 	var message = "$" + "|3|" + str(angle_in_degrees) + "|" + str(servoNumber) \
-				+ "|"+str(direction) +"|0|0"
+				+ "|"+str(direction) +"|-1|0"
 	if UdpServer.isConnected:
 		# "$|3|angle_in_degrees|servoNumber|foward|0|0"
 		UdpServer.send_to_client(message)

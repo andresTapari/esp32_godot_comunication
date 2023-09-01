@@ -13,11 +13,10 @@ func _input(event):
 		var speed: float = Input.get_axis("ui_up", "ui_down")
 		handle_speed_turn_axis(turn_axis,speed)
 	if event is InputEventJoypadButton:
-		# button_index = 6
-		print("ESP Write")
 		esp32.digitalWrite(18,true)
 		esp32.attachServo(19,0)
 		esp32.attachServo(23,1)
+
 func handle_speed_turn_axis(_turn_axis: float, _speed: float) -> void:
 	var turnEn  = _turn_axis != 0 
 	var turnDir = _turn_axis < 0
@@ -32,7 +31,7 @@ func handle_speed_turn_axis(_turn_axis: float, _speed: float) -> void:
 		esp32.servoWrite(turnSpeed,0,turnDir)
 		esp32.servoWrite(turnSpeed,1,turnDir)
 	
-	print("Turn En:",turnEn ," | Speed:",speed , "| TurnSpeed:", turnSpeed)
+#	print("Turn En:",turnEn ," | Speed:",speed , "| TurnSpeed:", turnSpeed)
 
 func map_value(value, from_min, from_max, to_min, to_max):
 	# Asegurarse de que el valor esté dentro del rango de entrada

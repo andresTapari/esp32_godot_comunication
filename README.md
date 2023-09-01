@@ -10,3 +10,15 @@ El objetivo principal de este proyecto es conectar un robot impreso en 3D con el
 Para correr esta aplicación se necesita descargar los siguientes programas:
 * [Arduino](https://www.arduino.cc/en/software)
 * [Godot (Version 4)](https://godotengine.org/download/)
+* [Godot (Version 3.x)](https://godotengine.org/download/)(Para el ejemplo de Domino)
+
+
+## Ejemplo: Domino
+El ejemplo de domino trata de controlar un pequeño robot a travez de una aplicación echa en Godot.
+
+Ver video en youtube.
+
+![Enlace YouTube](https://youtu.be/L-NJLUZ0oGY)
+
+![Alt text](img/img_01.png)
+

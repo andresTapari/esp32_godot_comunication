@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/vector/control_icons/hoover/step_foward_icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/vector/control_icons/pressed/play_icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/vector/control_icons/pressed/step_foward_icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/vector/control_icons/normal/play_icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/vector/control_icons/pressed/step_back_icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/vector/control_icons/hoover/play_icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/vector/control_icons/normal/step_back_icon.png" type="Texture" id=7]
+[ext_resource path="res://assets/vector/control_icons/normal/step_foward_icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/vector/control_icons/hoover/step_back_icon.png" type="Texture" id=9]
+[ext_resource path="res://assets/vector/control_icons/hoover/stop_icon.png" type="Texture" id=10]
+[ext_resource path="res://assets/vector/control_icons/normal/stop_icon.png" type="Texture" id=11]
+[ext_resource path="res://assets/vector/control_icons/pressed/stop_icon.png" type="Texture" id=12]
+[ext_resource path="res://script/ControlPanel.gd" type="Script" id=13]
+
+[node name="ControlDialog" type="MarginContainer"]
+margin_right = 200.0
+margin_bottom = 64.0
+script = ExtResource( 13 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 66.0
+
+[node name="StepBackButton" type="TextureButton" parent="HBoxContainer"]
+visible = false
+margin_right = 66.0
+margin_bottom = 66.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 9 )
+
+[node name="PlayButton" type="TextureButton" parent="HBoxContainer"]
+margin_right = 66.0
+margin_bottom = 66.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 6 )
+
+[node name="StopButton" type="TextureButton" parent="HBoxContainer"]
+margin_left = 70.0
+margin_right = 136.0
+margin_bottom = 66.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 10 )
+
+[node name="StepFowardButton" type="TextureButton" parent="HBoxContainer"]
+visible = false
+margin_left = 140.0
+margin_right = 206.0
+margin_bottom = 66.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 1 )
+
+[connection signal="pressed" from="HBoxContainer/StepBackButton" to="." method="_on_StepBackButton_pressed"]
+[connection signal="toggled" from="HBoxContainer/PlayButton" to="." method="_on_PlayButton_toggled"]
+[connection signal="pressed" from="HBoxContainer/StopButton" to="." method="_on_StopButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/StepFowardButton" to="." method="_on_StepFowardButton_pressed"]

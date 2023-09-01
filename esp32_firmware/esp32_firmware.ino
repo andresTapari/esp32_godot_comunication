@@ -9,7 +9,6 @@ WiFiUDP udp;
 
 void setup()
 {
-
   WiFi.begin(ssid, password); 
   Serial.begin(115200);
   Serial.print("Conectando a WiFi ");

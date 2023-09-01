@@ -3,6 +3,15 @@
 Servo servoRight; //Motor Izquierdo
 Servo servoLeft;  //Motor Derecho
 
+hw_timer_t *timerServoRun   = NULL;         // Puntero al timer para los servos
+
+unsigned long timeToWait_ms;                // Tiempo a esperar en ms
+unsigned long startTime_ms;                 // Tiempo en que inicio a contar en ms
+
+unsigned long volatile timerCounter_ms;     // Contador del timer en ms 
+
+bool timerInitialized = false;              // Bandera para timer inicializado
+bool volatile interrupts_handled = true;
 /**
  * @brief Decodifica un comando en formato de cadena y lo convierte en un arreglo de enteros.
  * 
@@ -11,6 +20,7 @@ Servo servoLeft;  //Motor Derecho
  */
 void decodeCommand(const char *command, int input[]) 
 {
+  
   char *token;
   char *rest = (char *)command;  // Copia de la cadena para no modificar la original
   int index = 0;
@@ -111,6 +121,10 @@ void doCMD03(int args[6])
     }
     speedRight = (int)customMap(args[1],0,100,90, topValue); 
     servoRight.write(speedRight);
+    if(args[4]>=0)
+    {
+      setup_interrupt_timer(args[4]);
+    }
   }
   else
   {
@@ -121,6 +135,53 @@ void doCMD03(int args[6])
     }
     speedLeft = (int)customMap((double)args[1], 0, 100, 90, topValue); 
     servoLeft.write(speedLeft);
+    if(args[4]>=0)
+    {
+      setup_interrupt_timer(args[4]);
+    }
+  }
+}
+
+
+/**
+ * @brief Configura la interrupcion por tiempo
+ *
+ * @param miliSecondsToWait Tiempo en ms a esperar para disparar la interrupcion
+ */
+void setup_interrupt_timer(int miliSecondsToWait)
+{
+  Serial.print("Time to wait:");
+  Serial.println(miliSecondsToWait);
+
+  if(!timerInitialized)
+  {
+    timerServoRun = timerBegin(0, 80, true);  // Temporizador 0, divisor de 80
+    timerAttachInterrupt(timerServoRun, &timer_servo_run_timeOut, true);  // Attach the ISR function
+    timerAlarmWrite(timerServoRun, 1000, true);  // 1 millón de microsegundos = 1 segundo
+    timerAlarmEnable(timerServoRun);
+    timerInitialized = true;
+  }
+  timerCounter_ms = 0;
+  timeToWait_ms = miliSecondsToWait;
+  interrupts_handled = false;
+}
+
+/**
+ * @brief Función disparada por una interrupcion de tiempo, cuando es llamada detiene los servomotores.
+ */
+
+void IRAM_ATTR timer_servo_run_timeOut()
+{
+  if(!interrupts_handled)
+  {
+    timerCounter_ms++;
+    if(timerCounter_ms >= timeToWait_ms)
+    {
+      interrupts_handled = true;
+      timerCounter_ms = 0;
+      servoLeft.write(90);
+      servoRight.write(90);
+    }
   }
 }
 

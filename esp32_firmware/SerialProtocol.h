@@ -11,12 +11,14 @@
 void decodeCommand(const char *command, int input[6]);
 void handle_comand_input(int args[6]);
 
-//Comandos:
+// Comandos:
 void doCMD01(int args[6]);
 void doCMD02(int args[6]);
 void doCMD03(int args[6]);
 
+// Funciones
 double customMap(double value, double in_min, double in_max, double out_min, double out_max);
-double interpolate(double value, double min, double max);
+void setup_interrupt_timer(int miliSecondsToWait);
+void IRAM_ATTR timer_servo_run_timeOut();
 
 #endif

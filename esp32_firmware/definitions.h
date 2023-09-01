@@ -4,9 +4,9 @@
 // RED WIFI a donde conectar
 
 // FIBERTEL WIFI
-// const char* ssid     = "Fibertel WiFi190 2.4GHz";       // Reemplaza con tu SSID de red WiFi
+// const char* ssid     = "Fibertel WiFi190 2.4GHz";       // Reemplaza con tu SSID de red WiFi  
 // const char* password = "0043616130";                    // Reemplaza con tu contraseña de red WiFi
-// const int udpPort    = 12000;                           // Reemplazar por puerto  usar
+// const int udpPort    = 12000;                           // Reemplazar por puerto  usar 192.168.0.232
 
 
 // IAPV_WIFI

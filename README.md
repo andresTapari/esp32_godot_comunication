@@ -19,6 +19,7 @@ El ejemplo de domino trata de controlar un pequeño robot a travez de una aplica
 Ver video en youtube.
 ![Alt text](img/img_01.png)
 
-![Alt text](https://img.youtube.com/vi/configuroweb/0.jpg)(https://youtu.be/L-NJLUZ0oGY)
+![Alt text](https://img.youtube.com/vi/L-NJLUZ0oGY/0.jpg)(https://youtu.be/L-NJLUZ0oGY)
 
 
+https://youtu.be/L-NJLUZ0oGY
